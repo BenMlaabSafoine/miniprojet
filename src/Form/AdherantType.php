@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Adherant;
+use App\Entity\Bibliothecaire;
+use App\Entity\Bibliotheque;
+use App\Entity\Reservation;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+class AdherantType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('nom')
+            ->add('prenom')
+            ->add('numtel')
+            ->add('email')
+            ->add('adresse')
+           
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Adherant::class,
+        ]);
+    }
+}

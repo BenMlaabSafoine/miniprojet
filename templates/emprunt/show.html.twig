@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Emprunt{% endblock %}
+
+{% block body %}
+    <h1>Emprunt</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ emprunt.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ emprunt.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ emprunt.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Numtel</th>
+                <td>{{ emprunt.numtel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ emprunt.email }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ emprunt.adresse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_emprunt_index') }}">back to list</a>
+
+    <a href="{{ path('app_emprunt_edit', {'id': emprunt.id}) }}">edit</a>
+
+    {{ include('emprunt/_delete_form.html.twig') }}
+{% endblock %}

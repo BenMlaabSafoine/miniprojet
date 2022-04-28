@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre{% endblock %}
+{% block js %}
+	<!-- Theme JS files -->
+	<script src="{{ asset('global_assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+	<script src="{{ asset('global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
+
+	
+	<script src="{{ asset('global_assets/js/demo_pages/datatables_basic.js') }}"></script>
+{% endblock %}
+{% block body %}
+<div class="content">
+   <div class="card-header header-elements-inline" style="background-color:RoyalBlue">
+						<h3 class="card-title" style="color:white">Livre</h3>
+						<div class="header-elements">
+							<a class="btn btn-primary" href="{{ path('app_livre_new') }}" style="width:100px" align="right" ><i class="icon-add"></i> Ajouter</a>
+	                	</div>
+					</div>
+
+
+    <table class="table datatable-basic dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Nbpages</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livre in livres %}
+            <tr>
+                <td>{{ livre.id }}</td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.auteur }}</td>
+                <td>{{ livre.nbpages }}</td>
+                <td>{{ livre.prix }}</td>
+                <td>
+                    <a  class="btn btn-primary" href="{{ path('app_livre_edit', {'id': livre.id}) }}" style="width:100px"><i class="icon-pencil"></i> Modifier</a>
+                {{ include('livre/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
